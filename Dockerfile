@@ -1,4 +1,4 @@
-FROM ghost
+FROM ghost:alpine
 
 # set url-hostname for Ghost with build arg
 ARG mode
