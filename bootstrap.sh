@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# place proper config
-if [ $environment == "development" ]
+# place dev config if dev env
+if [ "$environment" == "development" ]
 then
   rm config.production.json
   mv config.development.json config.production.json

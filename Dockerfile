@@ -1,12 +1,12 @@
 FROM ghost:alpine
 
 # set url-hostname for Ghost with build arg
-ARG mode
-ENV devMode ${mode}
 ENV url ""
 
-# copy config.production.json with db
-COPY config.${devMode}.json config.production.json
+# remove default symlink and copy config
+COPY configs/ .
+
+COPY bootstrap.sh .
 
 # copy themes/images to container
 COPY content content
@@ -21,3 +21,5 @@ COPY content content
 # Install cloudinary module (OPTIONAL - MUST COMMENT OUT Azure Storage Section)
 RUN npm install ghost-cloudinary-store
 RUN cp -r node_modules/ghost-cloudinary-store current/core/server/adapters/storage
+
+CMD [ "./bootstrap.sh" ]
