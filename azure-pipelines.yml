@@ -26,3 +26,4 @@ steps:
     repository: 'website'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
+    arguments: 'mode=development'
