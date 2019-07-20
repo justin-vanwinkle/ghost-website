@@ -12,7 +12,7 @@ pool:
 steps:
 - task: FileTransform@1
   inputs:
-    folderPath: '$(System.DefaultWorkingDirectory)/**/*'
+    folderPath: '$(System.DefaultWorkingDirectory)/'
     fileType: 'json'
     targetFiles: 'config.development.json'
     
