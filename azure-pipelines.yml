@@ -10,6 +10,12 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- task: FileTransform@1
+  inputs:
+    folderPath: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    fileType: 'json'
+    targetFiles: 'config.development.json'
+    
 - task: DockerInstaller@0
   inputs:
     dockerVersion: '17.09.0-ce'
