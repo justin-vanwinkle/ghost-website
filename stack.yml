@@ -1,0 +1,26 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+
+  db:
+    image: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: ghost
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+
+  # ghost:
+  #   build:
+  #     context: .
+  #     args:
+  #       mode: development
+  #   image: jcvan/website
+  #   ports:
+  #     - 2368:2368
+  #   environment:
+  #     url: http://localhost:2368
