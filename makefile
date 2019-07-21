@@ -1,7 +1,7 @@
 DBPASSWORD ?= $(shell stty -echo; read -p "DB Password: " pwd; stty echo; echo $$pwd)
 
 build: 
-	docker build -f Dockerfile -t justinreg.azurecr.io/website .
+	docker build --no-cache -f Dockerfile -t justinreg.azurecr.io/website .
 
 run-local:
 	docker run -it --rm --name ghost-test -e url=http://localhost:3001 -e dbPassword=$(DBPASSWORD) -e environment=development -p 3001:2368 justinreg.azurecr.io/website:latest
