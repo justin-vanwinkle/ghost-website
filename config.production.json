@@ -27,5 +27,15 @@
   "process": "systemd",
   "paths": {
     "contentPath": "/var/lib/ghost/content"
+  },
+  "storage": {
+    "active": "ghost-storage-azure",
+    "ghost-storage-azure": {
+      "connectionString": null,
+      "container": "blog",
+      "cdnUrl": "jvanwinkle.azureedge.net",
+      "useHttps" : "true",
+      "useDatedFolder" : true
+    }
   }
 }

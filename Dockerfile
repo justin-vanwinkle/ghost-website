@@ -9,9 +9,10 @@ COPY . .
 # copy redirects
 # COPY redirects.json content/data
 
-# Install Azure Storage (OPTIONAL - MUST COMMENT OUT Cloudinary Section)
+# Install Azure Storage
 RUN npm install ghost-storage-azure
-# RUN cp -vR node_modules/ghost-storage-azure ./content/adapters/storage
+# RUN cp -vR node_modules/ghost-storage-azure current/core/server/adapters/storage/ghost-storage-azure
+# RUN cp -vR node_modules/ghost-storage-azure content/adapters/storage/ghost-storage-azure
 
 # Install cloudinary module (OPTIONAL - MUST COMMENT OUT Azure Storage Section)
 # RUN npm install ghost-cloudinary-store
