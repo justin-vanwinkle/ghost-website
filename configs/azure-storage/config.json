@@ -1,0 +1,12 @@
+{
+    "storage": {
+      "active": "ghost-storage-azure",
+      "ghost-storage-azure": {
+        "connectionString": "<Set by AZURE_STORAGE_CONNECTION_STRING env var>",
+        "container": "blog",
+        "cdnUrl": "jvanwinkle.azureedge.net",
+        "useHttps" : "true",
+        "useDatedFolder" : true
+      }
+    }
+}
