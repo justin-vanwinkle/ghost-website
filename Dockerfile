@@ -20,7 +20,7 @@ COPY content content
 RUN npm install ghost-storage-azure && \
     cp -vR node_modules/ghost-storage-azure content/adapters/storage/ghost-storage-azure
 
-COPY configs/azure-storage content/adapters/storage/ghost-storage-azure
+COPY configs/azure-storage/config.json content/adapters/storage/ghost-storage-azure/config.json
 
 # RUN cp -vR node_modules/ghost-storage-azure current/core/server/adapters/storage/ghost-storage-azure
 # COPY configs/azure-storage current/core/server/adapters/storage/ghost-storage-azure
