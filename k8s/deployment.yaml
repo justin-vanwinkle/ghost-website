@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: personal-ghost-deployment
+  labels:
+    app: personal-ghost
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: personal-ghost
+  template:
+    metadata:
+      labels:
+        app: personal-ghost
+    spec:
+      containers:
+      - name: personal-ghost
+        image: justinreg.azurecr.io/website:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 2368
+        env:
+          - name: AZURE_STORAGE_CONNECTION_STRING
+            value: 'DefaultEndpointsProtocol=https;AccountName=jvanwinkle;AccountKey=anA7SDOtpiMe8mtnqznm+Nu3+e6lS+nk5qoKDOxNhWhafg/cHBJ9kFdPKrvwwSYiKCQBUNIKA8OaiwT6Ic5sGw==;EndpointSuffix=core.windows.net'
+          - name: NODE_ENV
+            value: production
+          - name: AZURE_STORAGE_CONNECTION_STRING
+            valueFrom:
+              secretKeyRef:
+                name: personal-website
+                key: storage-connectionString
+          - name: database__connection__password
+            valueFrom:
+              secretKeyRef:
+                name: personal-website
+                key: db-password
+
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: justinreg
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: personal-ghost-service
+spec:
+  selector:
+    app: personal-ghost
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 2368
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: personal-ghost-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt
+spec:
+  tls:
+    - hosts:
+        - personal-ghost-ingress.www.jvanwinkle.com
+      secretName: wwwjvanwinkle-crt-secret
+  rules:
+  - host: www.jvanwinkle.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: personal-ghost-service
+          servicePort: http
