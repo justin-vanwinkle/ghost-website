@@ -5,7 +5,7 @@ metadata:
   labels:
     app: personal-ghost
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: personal-ghost
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: personal-ghost
-        image: justinreg.azurecr.io/website:latest
+        image: docker.pkg.github.com/justin-vanwinkle/ghost-website/ghost:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 2368
@@ -35,7 +35,7 @@ spec:
                 key: db-password
       restartPolicy: Always
       imagePullSecrets:
-        - name: justinreg
+        - name: selfhubregcred
 ---
 apiVersion: v1
 kind: Service
