@@ -8,11 +8,11 @@
   "database": {
    "client": "mysql",
    "connection": {
-     "host": "selfhub-website.mysql.database.azure.com",
+     "host": "mysql.default.svc.cluster.local",
      "port": 3306,
-     "user": "selfhub_admin@selfhub-website",
+     "user": "root",
      "database": "personal",
-     "ssl": true
+     "ssl": false
    }
   },
   "mail": {
