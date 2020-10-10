@@ -20,6 +20,13 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 2368
+        resources:
+          requests:
+            memory: "120Mi"
+            cpu: "10m"
+          limits:
+            memory: "150Mi"
+            cpu: "300m"
         env:
           - name: NODE_ENV
             value: production
