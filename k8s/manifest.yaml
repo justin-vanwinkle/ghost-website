@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: personal-ghost-deployment
+  namespace: ghost
   labels:
     app: personal-ghost
 spec:
@@ -22,11 +23,11 @@ spec:
         - containerPort: 2368
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
-          limits:
             memory: "150Mi"
-            cpu: "150m"
+            cpu: "200m"
+          limits:
+            memory: "300Mi"
+            cpu: "200m"
         env:
           - name: NODE_ENV
             value: production
@@ -42,12 +43,13 @@ spec:
                 key: db-password
       restartPolicy: Always
       imagePullSecrets:
-        - name: selfhubregcred
+        - name: github-registry-credentials
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: personal-ghost-service
+  namespace: ghost
 spec:
   selector:
     app: personal-ghost
@@ -61,6 +63,7 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: personal-ghost-ingress
+  namespace: ghost
   annotations:
     kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: letsencrypt
@@ -77,3 +80,19 @@ spec:
         backend:
           serviceName: personal-ghost-service
           servicePort: http
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wwwjvanwinkle
+  namespace: ghost
+spec:
+  secretName: wwwjvanwinkle-crt-secret
+  dnsNames:
+  - www.jvanwinkle.com
+  issuerRef:
+    name: letsencrypt
+    # We can reference ClusterIssuers by changing the kind here.
+    # The default value is Issuer (i.e. a locally namespaced Issuer)
+    kind: ClusterIssuer
+    group: cert-manager.io
