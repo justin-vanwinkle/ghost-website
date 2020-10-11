@@ -8,10 +8,10 @@
   "database": {
    "client": "mysql",
    "connection": {
-     "host": "mysql-selfhub.mysql.database.azure.com",
-     "port": 3306,
-     "user": "selfhub_admin@mysql-selfhub",
-     "database": "personal",
+     "host": "private-db-mysql-nyc1-ghost-do-user-2302044-0.b.db.ondigitalocean.com",
+     "port": 25060,
+     "user": "personal-ghost@mysql-selfhub",
+     "database": "personal-ghost",
      "ssl": true
    }
   },
