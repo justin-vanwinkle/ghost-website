@@ -11,7 +11,7 @@
      "host": "private-db-mysql-nyc1-ghost-do-user-2302044-0.b.db.ondigitalocean.com",
      "port": 25060,
      "user": "personal-ghost",
-     "database": "personal-ghost",
+     "database": "personal",
      "ssl": true
    }
   },
