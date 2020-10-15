@@ -41,6 +41,13 @@ spec:
               secretKeyRef:
                 name: personal-website
                 key: db-password
+        volumeMounts:
+        - mountPath: /content/images
+          name: images-volume
+      volumes:
+      - name: images-volume
+        persistentVolumeClaim:
+          claimName: pvc-personal-ghost
       restartPolicy: Always
       imagePullSecrets:
         - name: github-registry-credentials
@@ -100,8 +107,8 @@ spec:
   apiVersion: v1
   kind: PersistentVolumeClaim
   metadata:
-    name: pvc-discourse
-    namespace: discourse
+    name: pvc-personal-ghost
+    namespace: ghost
   spec:
     accessModes:
     - ReadWriteMany
