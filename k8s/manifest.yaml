@@ -6,7 +6,7 @@ metadata:
   labels:
     app: personal-ghost
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: personal-ghost
@@ -21,6 +21,12 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 2368
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 2368
+          initialDelaySeconds: 30
+          periodSeconds: 30
         resources:
           requests:
             memory: "150Mi"
@@ -42,12 +48,12 @@ spec:
                 name: personal-website
                 key: db-password
         volumeMounts:
-        - mountPath: /content/images
+        - mountPath: /var/lib/ghost/content/images
           name: images-volume
       volumes:
       - name: images-volume
         persistentVolumeClaim:
-          claimName: pvc-personal-ghost
+          claimName: pvc-ghost-personal
       restartPolicy: Always
       imagePullSecrets:
         - name: github-registry-credentials
@@ -103,17 +109,3 @@ spec:
     # The default value is Issuer (i.e. a locally namespaced Issuer)
     kind: ClusterIssuer
     group: cert-manager.io
----
-  apiVersion: v1
-  kind: PersistentVolumeClaim
-  metadata:
-    name: pvc-personal-ghost
-    namespace: ghost
-  spec:
-    accessModes:
-    - ReadWriteMany
-    resources:
-      requests:
-        storage: 5Gi
-    storageClassName: nfs
----
