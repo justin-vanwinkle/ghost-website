@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: personal-ghost-deployment
+  name: personal-ghost
   namespace: ghost
   labels:
     app: personal-ghost
