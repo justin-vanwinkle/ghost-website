@@ -1,11 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: personal-ghost-deployment
+  name: personal-ghost
+  namespace: ghost
   labels:
     app: personal-ghost
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: personal-ghost
@@ -16,10 +17,27 @@ spec:
     spec:
       containers:
       - name: personal-ghost
-        image: justinreg.azurecr.io/website:latest
+        image: docker.pkg.github.com/justin-vanwinkle/ghost-website/ghost:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 2368
+        readinessProbe:
+          httpGet:
+            scheme: HTTP
+            path: /
+            port: 2368
+            httpHeaders:
+            - name: X-Forwarded-Proto
+              value: https
+          initialDelaySeconds: 60
+          periodSeconds: 5
+        resources:
+          requests:
+            memory: "150Mi"
+            cpu: "150m"
+          limits:
+            memory: "300Mi"
+            cpu: "200m"
         env:
           - name: NODE_ENV
             value: production
@@ -33,14 +51,22 @@ spec:
               secretKeyRef:
                 name: personal-website
                 key: db-password
+        volumeMounts:
+        - mountPath: /var/lib/ghost/content/images
+          name: images-volume
+      volumes:
+      - name: images-volume
+        persistentVolumeClaim:
+          claimName: pvc-ghost-personal
       restartPolicy: Always
       imagePullSecrets:
-        - name: justinreg
+        - name: github-registry-credentials
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: personal-ghost-service
+  namespace: ghost
 spec:
   selector:
     app: personal-ghost
@@ -54,8 +80,10 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: personal-ghost-ingress
+  namespace: ghost
   annotations:
     kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     cert-manager.io/cluster-issuer: letsencrypt
 spec:
   tls:
@@ -70,3 +98,19 @@ spec:
         backend:
           serviceName: personal-ghost-service
           servicePort: http
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wwwjvanwinkle
+  namespace: ghost
+spec:
+  secretName: wwwjvanwinkle-crt-secret
+  dnsNames:
+  - www.jvanwinkle.com
+  issuerRef:
+    name: letsencrypt
+    # We can reference ClusterIssuers by changing the kind here.
+    # The default value is Issuer (i.e. a locally namespaced Issuer)
+    kind: ClusterIssuer
+    group: cert-manager.io

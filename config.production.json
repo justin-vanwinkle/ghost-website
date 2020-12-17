@@ -8,9 +8,9 @@
   "database": {
    "client": "mysql",
    "connection": {
-     "host": "selfhub-website.mysql.database.azure.com",
-     "port": 3306,
-     "user": "selfhub_admin@selfhub-website",
+     "host": "private-db-mysql-nyc1-ghost-do-user-2302044-0.b.db.ondigitalocean.com",
+     "port": 25060,
+     "user": "personal-ghost",
      "database": "personal",
      "ssl": true
    }
@@ -27,15 +27,5 @@
   "process": "systemd",
   "paths": {
     "contentPath": "/var/lib/ghost/content"
-  },
-  "storage": {
-    "active": "ghost-storage-azure",
-    "ghost-storage-azure": {
-      "connectionString": null,
-      "container": "blog",
-      "cdnUrl": "jvanwinkle.azureedge.net",
-      "useHttps" : "true",
-      "useDatedFolder" : true
-    }
   }
 }
