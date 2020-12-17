@@ -10,7 +10,7 @@
    "connection": {
      "host": "jvanwinkle.mysql.database.azure.com",
      "port": 3306,
-     "user": "jvanwinkle",
+     "user": "justin@jvanwinkle",
      "database": "personal-ghost",
      "ssl": true
    }
