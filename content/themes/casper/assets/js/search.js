@@ -30,21 +30,21 @@ var itemPreprocessor = function(item) {
 };
 
 var indexingStart = function() {
-    $('.search-field')
+    $('#search-field')
         .prop('disabled', true)
         .addClass('yellow-bg')
         .prop('placeholder', 'Indexing, please wait');
 };
 
 var indexingEnd = function() {
-    $('.search-field')
+    $('#search-field')
         .prop('placeholder', 'Search …')
         .removeClass('yellow-bg')
         .prop('disabled', false);
 };
 
 $(document).ready(function () {
-    var searchField = $(".search-field").ghostHunter({
+    var searchField = $("#search-field").ghostHunter({
         results   : "#search-results",
         onKeyUp: true,
         onPageLoad: true,
@@ -62,6 +62,6 @@ $(document).ready(function () {
 
     $('#search-btn').click(function() {
         $('.search-overlay').fadeIn();
-        $('.search-field').focus();
+        $('#search-field').focus();
     });
 });
