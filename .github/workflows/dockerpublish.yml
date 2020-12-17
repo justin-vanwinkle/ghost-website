@@ -10,8 +10,8 @@ on:
       - v*
 
   # Run tests for any PRs.
-  pull_request:
-
+#   pull_request:
+    
 env:
   # IMAGE_NAME: selfhub
   IMAGE_NAME: docker.pkg.github.com/${{ github.repository }}/ghost
