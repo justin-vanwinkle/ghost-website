@@ -56,14 +56,14 @@ $(document).ready(function () {
         indexing_end: indexingEnd
     });
 
-    $('#close-btn').click(function() {
-        $('#search-overlay').fadeOut();
+    $('.close-btn').click(function() {
+        $('.search-overlay').fadeOut();
         $('#search-btn').show();
     });
 
     $('#search-btn').click(function() {
         $(this).hide();
-        $('#search-overlay').fadeIn();
-        $('#search-field').focus();
+        $('.search-overlay').fadeIn();
+        $('.search-field').focus();
     });
 });
