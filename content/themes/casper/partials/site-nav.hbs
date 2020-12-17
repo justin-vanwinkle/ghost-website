@@ -32,7 +32,9 @@
                 <a class="rss-button" href="https://feedly.com/i/subscription/feed/{{@site.url}}/rss/" title="RSS" target="_blank" rel="noopener">{{> "icons/rss"}}</a>
             {{/unless}}
         {{/if}}
-
+        <a class="nav-icon" href="#search">
+            <i class="fa fa-search fa-2x"></i>
+        </a>
         {{#if @labs.members}}
             <a class="subscribe-button" href="#subscribe">Subscribe</a>
         {{/if}}
