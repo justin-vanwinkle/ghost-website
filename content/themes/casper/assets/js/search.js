@@ -44,7 +44,7 @@ var indexingEnd = function() {
 };
 
 $(document).ready(function () {
-    var searchField = $("#search-field").ghostHunter({
+    var searchField = $(".search-field").ghostHunter({
         results   : "#search-results",
         onKeyUp: true,
         onPageLoad: true,
