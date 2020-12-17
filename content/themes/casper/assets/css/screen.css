@@ -2861,7 +2861,7 @@ Usage (In Ghost editor):
     flex-basis: 100%;
 }
 
-#search-field {
+.search-field {
     max-width: 95%;
 }
 
