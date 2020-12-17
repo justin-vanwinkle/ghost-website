@@ -2947,7 +2947,7 @@ Usage (In Ghost editor):
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(9, 10, 11, 0.8);
+    background: rgba(9, 10, 11, 0.95);
     opacity: 0;
     transition: opacity 0.2s ease-in;
     pointer-events: none;
