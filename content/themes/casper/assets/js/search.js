@@ -64,6 +64,6 @@ $(document).ready(function () {
     $('#search-btn').click(function() {
         $(this).hide();
         $('.search-overlay').fadeIn();
-        $('#search-field').focus();
+        $('.search-field').focus();
     });
 });
