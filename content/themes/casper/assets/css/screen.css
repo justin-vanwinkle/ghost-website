@@ -2817,6 +2817,76 @@ Usage (In Ghost editor):
     }
 }
 
+/* Customizations for search overlay */
+.nav-icon {
+    display: block;
+    border-radius: 10px;
+    line-height: 1em;
+    color: #FFF;
+    padding: 10px;
+    opacity: .8;
+}
+
+.nav-icon:hover {
+    opacity: 1;
+}
+
+.search-overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: auto;
+    margin: 0;
+}
+
+#search-container {
+    position: relative;
+    margin: 60px 0px 40px 0px;
+    color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-flow: column nowrap;
+    max-width: 1200px;
+}
+
+#search-form {
+    margin-bottom: 40px;
+    flex-basis: 100%;
+}
+
+#search-field {
+    max-width: 95%;
+}
+
+#search-results {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.search-excerpt {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.search-card-content {
+    padding: 0 10px 0 10px;
+    border-radius: 3px;
+}
+
+@media (max-width: 500px) {
+    .page-overlay button {
+        margin: 12px 0 0;
+    }
+}
 
 /* 11. Site Footer
 /* ---------------------------------------------------------- */
