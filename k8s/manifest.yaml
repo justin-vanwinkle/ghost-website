@@ -6,7 +6,7 @@ metadata:
   labels:
     app: personal-ghost
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: personal-ghost
@@ -33,11 +33,11 @@ spec:
           periodSeconds: 5
         resources:
           requests:
-            memory: "150Mi"
-            cpu: "150m"
-          limits:
             memory: "300Mi"
-            cpu: "200m"
+            cpu: "300m"
+          limits:
+            memory: "600Mi"
+            cpu: "600m"
         env:
           - name: NODE_ENV
             value: production
