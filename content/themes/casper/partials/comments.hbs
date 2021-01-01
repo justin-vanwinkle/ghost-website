@@ -18,7 +18,9 @@
   <div id="cove"></div>
 
   {{^if @member}}
-    <p>Sign in or become a member to post as yourself and receive emails when you get a response.</p>
+    {{!-- <p>Sign in or become a member to post as yourself and receive emails when you get a response.</p> --}}
+    <p style="text-align: right;"><b>Want to post as yourself?</b><br>
+    Sign in or become a member. You'll be notified when someone replies.</p>
   {{/if}}
 
   {{#if @member}}
