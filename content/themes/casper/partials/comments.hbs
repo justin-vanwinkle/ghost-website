@@ -7,14 +7,25 @@
 
   <div id="cove"></div>
   
-  {{^if @member}}
+  {{#if @member}}
+      <p style="text-align: right;"><b>Posting as {{#if @member.name}}{{@member.name}}{{else}}{{@member.email}}{{/if}}</b><br>
+        Sign out to post anonymously</p>
+  {{else}}
     <p style="text-align: right;"><b>Posting Anonymously</b><br>
     Sign in for reply notifications</p>
-  {{else}}
-    <p style="text-align: right;"><b>Posting as {{@member.name}}</b><br>
-    Sign out to post anonymously</p>
   {{/if}}
 
+  {{!-- {{^if @member}}
+    <p style="text-align: right;"><b>Posting Anonymously</b><br>
+    Sign in for reply notifications</p>
+  {{else if @member.name}}
+    <p style="text-align: right;"><b>Posting as {{@member.name}}</b><br>
+    Sign out to post anonymously</p>
+  {{else}}
+    <p style="text-align: right;"><b>Posting as {{@member.email}}</b><br>
+        Sign out to post anonymously</p>
+  {{/if}} --}}
+  
   {{#if @member}}
     <script>
     const Cove = {
