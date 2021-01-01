@@ -109,13 +109,15 @@ into the {body} of the default.hbs template --}}
                 </div>
             </section>
 
+            {{!-- <script defer src="https://commento.jvanwinkle.com/js/commento.js"></script>
+            <div id="commento"></div> --}}
+            
+            {{> comments}}
+
             {{!-- Email subscribe form at the bottom of the page --}}
             {{#if @labs.members}}
                 {{> subscribe-form}}
             {{/if}}
-
-            <script defer src="https://commento.jvanwinkle.com/js/commento.js"></script>
-            <div id="commento"></div>
 
         </article>
 
@@ -208,4 +210,7 @@ into the {body} of the default.hbs template --}}
         });
     });
 </script>
+
+<script src="https://cdn.cove.chat/comments.js" async></script>
+
 {{/contentFor}}
