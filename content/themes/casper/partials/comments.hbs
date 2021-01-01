@@ -1,6 +1,13 @@
 {{#if @labs.members}}
   <h2><span id="cove-count"></span> Comments</h2>
 
+  {{^if @member}}
+    {{!-- <p>Sign in or become a member to post as yourself and receive emails when you get a response.</p> --}}
+    <p style="text-align: right;"><b>Want to post as yourself?</b><br>
+    Sign in. You'll be notified when someone replies.<br>
+    Otherwise, be anonymous ¯\_(ツ)_/¯</p>
+  {{/if}}
+  
   {{!-- {{^if @member}}
     <p>Sign in or become a {{@site.title}} member to join the conversation.<br>
     Just enter your email below to get a log in link.</p>
@@ -16,12 +23,6 @@
   {{/if}} --}}
 
   <div id="cove"></div>
-
-  {{^if @member}}
-    {{!-- <p>Sign in or become a member to post as yourself and receive emails when you get a response.</p> --}}
-    <p style="text-align: right;"><b>Want to post as yourself?</b><br>
-    Sign in or become a member. You'll be notified when someone replies.</p>
-  {{/if}}
 
   {{#if @member}}
     <script>
