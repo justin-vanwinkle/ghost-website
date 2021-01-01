@@ -23,6 +23,14 @@
   {{/if}} --}}
 
   <div id="cove"></div>
+  
+  {{^if @member}}
+    <p style="text-align: right;"><b>Posting Anonymously.</b><br>
+    Would you rather sign in?</p>
+  {{else}}
+    <p style="text-align: right;"><b>Posting as {{@member.name}}.</b><br>
+    Sign out to post anonymously.</p>
+  {{/if}}
 
   {{#if @member}}
     <script>
