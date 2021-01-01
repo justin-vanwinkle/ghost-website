@@ -115,7 +115,7 @@ into the {body} of the default.hbs template --}}
             {{/if}}
 
             
-            <section class="post-full-comments">
+            {{!-- <section class="post-full-comments">
                 {{!-- If you want to embed comments, this is a good place to do it! --}}
                 <div id="disqus_thread"></div>
                 <script>
@@ -130,8 +130,9 @@ into the {body} of the default.hbs template --}}
                         (d.head || d.body).appendChild(s);
                     })();
                 </script>
-            </section>
-           
+            </section> --}}
+            <script defer src="https://commento.jvanwinkle.com/js/commento.js"></script>
+            <div id="commento"></div>
 
         </article>
 
