@@ -5,6 +5,9 @@
     "port": 2368,
     "host": "0.0.0.0"
   },
+  "admin": {
+    "url": "https://www.jvanwinkle.com"
+  },
   "database": {
    "client": "mysql",
    "connection": {
