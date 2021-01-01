@@ -14,28 +14,22 @@
     <p style="text-align: right;"><b>Posting Anonymously</b><br>
     Sign in for reply notifications</p>
   {{/if}}
-
-  {{!-- {{^if @member}}
-    <p style="text-align: right;"><b>Posting Anonymously</b><br>
-    Sign in for reply notifications</p>
-  {{else if @member.name}}
-    <p style="text-align: right;"><b>Posting as {{@member.name}}</b><br>
-    Sign out to post anonymously</p>
-  {{else}}
-    <p style="text-align: right;"><b>Posting as {{@member.email}}</b><br>
-        Sign out to post anonymously</p>
-  {{/if}} --}}
   
-  {{#if @member}}
+  
     <script>
     const Cove = {
         publication: "c559f15929155481d23e455b116c626c",
         contentId: "{{id}}",
-        memberId: "{{@member.uuid}}",
-        memberEmail: "{{@member.email}}"
+        {{#if @member}}
+            memberId: "{{@member.uuid}}",
+            memberEmail: "{{@member.email}}"
+        {{else}}
+            memberId: "d6f2c199-2e34-41ec-8347-3b8fa4ab2873",
+            memberEmail: "anonymous@jvanwinkle.com"
+        {{/if}}
     }
     </script>
-  {{else}}
+  {{!-- {{else}}
     <script>
     const Cove = {
         publication: "c559f15929155481d23e455b116c626c",
@@ -44,6 +38,6 @@
         memberEmail: "anonymous@jvanwinkle.com"
     }
     </script>
-  {{/if}}
+  {{/if}} --}}
 
 {{/if}}
