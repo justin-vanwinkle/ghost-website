@@ -51,6 +51,11 @@ spec:
               secretKeyRef:
                 name: personal-website
                 key: db-password
+          - name: mail__options__auth__pass
+            valueFrom:
+              secretKeyRef:
+                name: personal-website
+                key: mail-password
         volumeMounts:
         - mountPath: /var/lib/ghost/content/images
           name: images-volume

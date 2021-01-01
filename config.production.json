@@ -16,7 +16,16 @@
    }
   },
   "mail": {
-    "transport": "Direct"
+    "transport": "SMTP",
+    "options": {
+      "service": "Mailgun",
+      "host": "smtp.mailgun.org",
+      "port": 587,
+      "secureConnection": true,
+      "auth": {
+      "user": "postmaster@mg.jvanwinkle.com"
+    }
+  }
   },
   "logging": {
     "transports": [
