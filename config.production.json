@@ -19,7 +19,7 @@
    }
   },
   "mail": {
-    "from": "noreply@jvanwinkle.com",
+    "from": "'jvanwinkle.com' <vanwinkle.justin@gmail.com>",
     "transport": "SMTP",
     "options": {
       "service": "Mailgun",
