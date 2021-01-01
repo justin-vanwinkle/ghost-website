@@ -1,7 +1,7 @@
 {{#if @labs.members}}
   <h2><span id="cove-count"></span> Comments</h2>
 
-  {{^if @member}}
+  {{!-- {{^if @member}}
     <p>Sign in or become a {{@site.title}} member to join the conversation.<br>
     Just enter your email below to get a log in link.</p>
     <form data-members-form="signin" id="cove-login">
@@ -13,13 +13,13 @@
       <span class="signin-success" style="display:none">Great! Please check your inbox (or spam folder) for a log in link.</span>
       <span class="signin-error" style="display:none">Something didn't work. Please try again.</span>
     </form>
-  {{/if}}
+  {{/if}} --}}
 
   <div id="cove"></div>
 
-  {{#if @member}}
+  {{!-- {{#if @member}} --}}
     <p>Signed in as {{@member.email}} · <a href="javascript:" data-members-signout>Sign out</a></p>
-  {{/if}}
+  {{!-- {{/if}} --}}
 
   <script>
   const Cove = {
