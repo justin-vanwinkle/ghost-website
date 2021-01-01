@@ -24,11 +24,11 @@
   <div id="cove"></div>
   
   {{^if @member}}
-    <p style="text-align: right;"><b>Posting Anonymously.</b><br>
-    ¯\_(ツ)_/¯ Would you rather sign in?</p>
+    <p style="text-align: right;"><b>Posting Anonymously</b><br>
+    ¯\_(ツ)_/¯ Sign in to receive reply notifications</p>
   {{else}}
-    <p style="text-align: right;"><b>Posting as {{@member.name}}.</b><br>
-    Sign out to post anonymously.</p>
+    <p style="text-align: right;"><b>Posting as {{@member.name}}</b><br>
+    Sign out to post anonymously</p>
   {{/if}}
 
   {{#if @member}}
