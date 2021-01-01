@@ -23,7 +23,7 @@
     "options": {
       "service": "Mailgun",
       "host": "smtp.mailgun.org",
-      "port": 587,
+      "port": 465,
       "secureConnection": true,
       "auth": {
       "user": "postmaster@mg.jvanwinkle.com"
