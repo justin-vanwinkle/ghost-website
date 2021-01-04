@@ -33,15 +33,9 @@
                 <a class="rss-button" href="https://feedly.com/i/subscription/feed/{{@site.url}}/rss/" title="RSS" target="_blank" rel="noopener">{{> "icons/rss"}}</a>
             {{!-- {{/unless}} --}}
         {{/if}}
-        <a id="search-btn" class="subscribe-button" href="#search">
-            Search 
-            <i class="fa fa-search" style="font-size:1.7rem"></i>
-        </a>
+        <a id="search-btn" class="subscribe-button" href="#search"><i class="fa fa-search" style="font-size:1.7rem"></i></a>
         {{#if @labs.members}}
-            <a class="subscribe-button" href="#subscribe">
-                Subscribe 
-                {{> "icons/rss"}}
-            </a>
+            <a class="subscribe-button" href="#subscribe">Subscribe</a>
         {{/if}}
     </div>
 </nav>
