@@ -27,7 +27,7 @@
                 {{#if @site.twitter}}
                     <a class="social-link social-link-tw" href="{{twitter_url @site.twitter}}" title="Twitter" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
                 {{/if}}
-                <a class="social link" href="https://www.linkedin.com/in/justin-vanwinkle/" target="_blank" rel="noopener">{{> "icons/linkedin"}}</a>
+                {{!-- <a class="social link social-link-in" href="https://www.linkedin.com/in/justin-vanwinkle/" target="_blank" rel="noopener">{{> "icons/linkedin"}}</a> --}}
             </div>
             {{!-- {{#unless @labs.members}} --}}
                 <a class="rss-button" href="https://feedly.com/i/subscription/feed/{{@site.url}}/rss/" title="RSS" target="_blank" rel="noopener">{{> "icons/rss"}}</a>
@@ -40,7 +40,7 @@
         {{#if @labs.members}}
             <a class="subscribe-button" href="#subscribe">
                 Subscribe 
-                <i class="far fa-paper-plane" style="font-size:1.7rem"></i>
+                {{> "icons/rss"}}
             </a>
         {{/if}}
     </div>
