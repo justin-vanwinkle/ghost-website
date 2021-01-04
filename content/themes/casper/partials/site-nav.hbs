@@ -27,16 +27,21 @@
                 {{#if @site.twitter}}
                     <a class="social-link social-link-tw" href="{{twitter_url @site.twitter}}" title="Twitter" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
                 {{/if}}
+                <a class="social link" href="https://www.linkedin.com/in/justin-vanwinkle/" target="_blank" rel="noopener">{{> "icons/linkedin"}}</a>
             </div>
-            {{#unless @labs.members}}
+            {{!-- {{#unless @labs.members}} --}}
                 <a class="rss-button" href="https://feedly.com/i/subscription/feed/{{@site.url}}/rss/" title="RSS" target="_blank" rel="noopener">{{> "icons/rss"}}</a>
-            {{/unless}}
+            {{!-- {{/unless}} --}}
         {{/if}}
-        <a id="search-btn" class="nav-icon" href="#search">
-            <i class="fa fa-search fa-2x"></i>
+        <a id="search-btn" class="subscribe-button" href="#search">
+            Search 
+            <i class="fa fa-search" style="font-size:1.7rem"></i>
         </a>
         {{#if @labs.members}}
-            <a class="subscribe-button" href="#subscribe">Subscribe</a>
+            <a class="subscribe-button" href="#subscribe">
+                Subscribe 
+                <i class="far fa-paper-plane" style="font-size:1.7rem"></i>
+            </a>
         {{/if}}
     </div>
 </nav>
