@@ -93,10 +93,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - personal-ghost-ingress.www.jvanwinkle.com
-      secretName: wwwjvanwinkle-crt-secret
+        - personal-ghost-ingress.www.kubernet.dev
+      secretName: wwwkubernet-crt-secret
   rules:
-  - host: www.jvanwinkle.com
+  - host: www.kubernet.dev
     http:
       paths:
       - path: /
@@ -107,12 +107,12 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: wwwjvanwinkle
+  name: wwwkubernet
   namespace: ghost
 spec:
-  secretName: wwwjvanwinkle-crt-secret
+  secretName: wwwkubernet-crt-secret
   dnsNames:
-  - www.jvanwinkle.com
+  - www.kubernet.dev
   issuerRef:
     name: letsencrypt
     # We can reference ClusterIssuers by changing the kind here.

@@ -1,12 +1,12 @@
 {
   "enableDeveloperExperiments": true,
-  "url": "https://www.jvanwinkle.com",
+  "url": "https://www.kubernet.dev",
   "server": {
     "port": 2368,
     "host": "0.0.0.0"
   },
   "admin": {
-    "url": "https://www.jvanwinkle.com"
+    "url": "https://www.kubernet.dev"
   },
   "database": {
    "client": "mysql",
@@ -19,7 +19,7 @@
    }
   },
   "mail": {
-    "from": "'jvanwinkle.com' <vanwinkle.justin@gmail.com>",
+    "from": "'Kubernet' <vanwinkle.justin@gmail.com>",
     "transport": "SMTP",
     "options": {
       "service": "Mailgun",
@@ -27,7 +27,7 @@
       "port": 465,
       "secureConnection": true,
       "auth": {
-      "user": "postmaster@mg.jvanwinkle.com"
+      "user": "postmaster@mg.kubernet.dev"
     }
   }
   },
