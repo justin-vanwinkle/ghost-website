@@ -94,9 +94,34 @@ spec:
   tls:
     - hosts:
         - personal-ghost-ingress.www.kubernet.dev
-      secretName: wwwkubernet-crt-secret
+      secretName: kubernet-crt-secret
   rules:
   - host: www.kubernet.dev
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: personal-ghost-service
+          servicePort: http
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: personal-ghost-ingress-wwwredir
+  namespace: ghost
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: "/",
+    nginx.ingress.kubernetes.io/configuration-snippet: "return 302 $scheme://www.kubernet.dev$request_uri;"
+    cert-manager.io/cluster-issuer: letsencrypt
+spec:
+  tls:
+    - hosts:
+        - personal-ghost-ingress.kubernet.dev
+      secretName: kubernet-crt-secret
+  rules:
+  - host: kubernet.dev
     http:
       paths:
       - path: /
@@ -107,12 +132,13 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: wwwkubernet
+  name: kubernet
   namespace: ghost
 spec:
-  secretName: wwwkubernet-crt-secret
+  secretName: kubernet-crt-secret
   dnsNames:
   - www.kubernet.dev
+  - kubernet.dev
   issuerRef:
     name: letsencrypt
     # We can reference ClusterIssuers by changing the kind here.
