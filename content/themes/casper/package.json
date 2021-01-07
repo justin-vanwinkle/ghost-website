@@ -55,7 +55,7 @@
         "gulp-concat": "2.6.1",
         "gulp-livereload": "4.0.2",
         "gulp-postcss": "9.0.0",
-        "gulp-terser": "^2.0.0",
+        "gulp-terser": "^2.0.1",
         "gulp-zip": "5.0.2",
         "inquirer": "7.3.3",
         "postcss": "8.2.2",
