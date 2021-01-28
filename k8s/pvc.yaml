@@ -4,9 +4,9 @@ metadata:
   name: pvc-ghost-personal
   namespace: ghost
 spec:
+  storageClassName: managed-premium
   accessModes:
-  - ReadWriteMany
+  - ReadWriteOnce
   resources:
     requests:
       storage: 2Gi
-  storageClassName: nfs

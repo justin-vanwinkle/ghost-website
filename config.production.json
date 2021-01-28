@@ -9,13 +9,9 @@
     "url": "https://www.kubernet.dev"
   },
   "database": {
-   "client": "mysql",
+   "client": "sqlite3",
    "connection": {
-     "host": "jvanwinkle.mysql.database.azure.com",
-     "port": 3306,
-     "user": "justin@jvanwinkle",
-     "database": "personal-ghost",
-     "ssl": true
+     "filename": "/var/lib/ghost/content/data/ghost.db"
    }
   },
   "mail": {

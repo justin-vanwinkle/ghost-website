@@ -58,9 +58,11 @@ spec:
                 key: mail-password
         volumeMounts:
         - mountPath: /var/lib/ghost/content/images
-          name: images-volume
+          name: ghost-volume
+        - mountPath: /var/lib/ghost/content/data
+          name: ghost-volume
       volumes:
-      - name: images-volume
+      - name: ghost-volume
         persistentVolumeClaim:
           claimName: pvc-ghost-personal
       restartPolicy: Always
