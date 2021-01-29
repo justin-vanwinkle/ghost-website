@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: personal-ghost
-        image: docker.pkg.github.com/justin-vanwinkle/ghost-website/ghost:latest
+        image: docker.pkg.github.com/justin-vanwinkle/ghost-website/ghost:140
         imagePullPolicy: Always
         ports:
         - containerPort: 2368
