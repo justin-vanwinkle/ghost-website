@@ -5,4 +5,4 @@ COPY config.production.json .
 COPY scripts/addons.js .
 
 RUN npm install applicationinsights lightship \ 
-    && cat insights.js current/index.js > current/index.js
+    && cat addons.js current/index.js > current/index.js
