@@ -9,4 +9,3 @@ function removeProbes(envelope, context) {
     }
 };
 appInsights.defaultClient.addTelemetryProcessor(removeProbes);
-
