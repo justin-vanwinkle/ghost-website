@@ -10,10 +10,3 @@ function removeProbes(envelope, context) {
 };
 appInsights.defaultClient.addTelemetryProcessor(removeProbes);
 
-import {
-    createLightship
-} from 'lightship';
-
-const configuration: ConfigurationInput = {};
-
-const lightship: Lightship = createLightship(configuration);

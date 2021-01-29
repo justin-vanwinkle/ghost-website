@@ -23,7 +23,7 @@ spec:
         - containerPort: 2368
         readinessProbe:
           httpGet:
-            path: /ready
+            path: /
             port: 2368
             httpHeaders:
             - name: X-Forwarded-Proto
@@ -35,7 +35,7 @@ spec:
           timeoutSeconds: 5
         livenessProbe:
           httpGet:
-            path: /live
+            path: /
             port: 2368
             httpHeaders:
             - name: X-Forwarded-Proto
