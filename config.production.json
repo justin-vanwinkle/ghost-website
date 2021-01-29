@@ -23,7 +23,7 @@
       "port": 465,
       "secureConnection": true,
       "auth": {
-      "user": "postmaster@mg.kubernet.dev"
+        "user": "postmaster@mg.kubernet.dev"
     }
   }
   },
