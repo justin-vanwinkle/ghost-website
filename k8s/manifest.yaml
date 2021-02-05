@@ -21,16 +21,30 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 2368
-        readinessProbe:
-          httpGet:
-            scheme: HTTP
-            path: /
-            port: 2368
-            httpHeaders:
-            - name: X-Forwarded-Proto
-              value: https
-          initialDelaySeconds: 60
-          periodSeconds: 5
+        # readinessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 2368
+        #     httpHeaders:
+        #     - name: X-Forwarded-Proto
+        #       value: https
+        #   failureThreshold: 1
+        #   initialDelaySeconds: 5
+        #   periodSeconds: 5
+        #   successThreshold: 1
+        #   timeoutSeconds: 5
+        # livenessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 2368
+        #     httpHeaders:
+        #     - name: X-Forwarded-Proto
+        #       value: https
+        #   failureThreshold: 3
+        #   initialDelaySeconds: 10
+        #   periodSeconds: 30
+        #   successThreshold: 1
+        #   timeoutSeconds: 5
         resources:
           requests:
             memory: "300Mi"
