@@ -39,4 +39,4 @@ jobs:
           namespace: ghost
           manifests: k8s/manifest.yaml
           images: docker.pkg.github.com/${{ github.repository }}/ghost
-          kubectl-version: 1.20.2
+#           kubectl-version: 1.20.2
