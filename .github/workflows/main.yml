@@ -29,7 +29,7 @@ jobs:
         uses: Azure/aks-set-context@v1.1
         with:
           # Azure credentials i.e. output of `az ad sp create-for-rbac --sdk-auth`
-          creds: $RBAC_SERVICE_ACCOUNT_CREDS
+          creds: "$env.RBAC_SERVICE_ACCOUNT_CREDS"
           resource-group: rg-aks-centralus
           cluster-name: aks-centralus
 
