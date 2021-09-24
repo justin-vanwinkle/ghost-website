@@ -47,7 +47,7 @@
     "contributors": "https://github.com/TryGhost/Casper/graphs/contributors",
     "devDependencies": {
         "@tryghost/release-utils": "0.6.15",
-        "autoprefixer": "10.2.5",
+        "autoprefixer": "10.3.5",
         "beeper": "3.0.0",
         "cssnano": "5.0.2",
         "gscan": "4.3.1",
