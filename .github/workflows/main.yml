@@ -28,7 +28,7 @@ jobs:
         with:
           # Azure credentials i.e. output of `az ad sp create-for-rbac --sdk-auth`
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-          resource-group: ghost
+          resource-group: rg-aks-centralus
           cluster-name: aks
 #           resource-group: rg-aks-centralus
 #           cluster-name: aks-centralus
