@@ -97,7 +97,7 @@ spec:
       port: 80
       targetPort: 2368
 ---
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: personal-ghost-ingress
@@ -121,7 +121,7 @@ spec:
           serviceName: personal-ghost-service
           servicePort: http
 ---
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: personal-ghost-ingress-wwwredir
