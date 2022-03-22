@@ -1,4 +1,4 @@
-FROM ghost:4.39.0-alpine
+FROM ghost:4.40.0-alpine
 
 COPY content content
 COPY config.production.json .
