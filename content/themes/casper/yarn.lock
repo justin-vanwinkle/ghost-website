@@ -175,10 +175,10 @@
     moment "^2.29.1"
     prettyjson "^1.2.5"
 
-"@tryghost/release-utils@0.7.12":
-  version "0.7.12"
-  resolved "https://registry.yarnpkg.com/@tryghost/release-utils/-/release-utils-0.7.12.tgz#be5f75d0b363294df43570f4d08cb58e63df4712"
-  integrity sha512-ZfDK/gYlVimdF+BAWBRbAel4+1050Bi7mt3H6vTJXjjPq+TToDEDg2t2wk/cxB7M6yQgFtbAqaoWQ32DN39QJw==
+"@tryghost/release-utils@0.7.14":
+  version "0.7.14"
+  resolved "https://registry.yarnpkg.com/@tryghost/release-utils/-/release-utils-0.7.14.tgz#dbd3838f9df308d875c18b0cf48fc88bfb5de3cb"
+  integrity sha512-cHIYop4mWa9Va17HpYQzTJNa2a3hBIhYPImcghAoVZCeFcpo2g/FQKhXCZmpvn6K/U5MLNWRqxQs7wHegV8TEw==
   dependencies:
     "@tryghost/errors" "^1.2.1"
     bluebird "^3.7.2"
