@@ -33,8 +33,4 @@
       "stdout"
     ]
   },
-  "process": "systemd",
-  "paths": {
-    "contentPath": "/var/lib/ghost/content"
-  }
 }
