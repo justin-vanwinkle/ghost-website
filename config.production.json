@@ -9,10 +9,14 @@
     "url": "https://www.kubernet.dev"
   },
   "database": {
-   "client": "sqlite3",
-   "connection": {
-     "filename": "/var/lib/ghost/content/data/ghost.db"
-   }
+    "client": "mysql",
+    "connection": {
+      "host": "mysql.ghost.svc.cluster.local",
+      "port": 3306,
+      "user": "ghost",
+      "password": "",
+      "database": "ghost"
+    }
   },
   "mail": {
     "from": "'Kubernet' <vanwinkle.justin@gmail.com>",
@@ -24,8 +28,11 @@
       "secureConnection": true,
       "auth": {
         "user": "postmaster@mg.kubernet.dev"
+      }
     }
-  }
+  },
+  "tenor": {
+    "googleApiKey": "AIzaSyDTUBSHZWK8JNetlHuWXETYjM792RYR410"
   },
   "logging": {
     "transports": [

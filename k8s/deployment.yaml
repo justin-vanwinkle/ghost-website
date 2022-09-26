@@ -1,0 +1,84 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: personal-ghost
+  namespace: ghost
+  labels:
+    app: personal-ghost
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: personal-ghost
+  template:
+    metadata:
+      labels:
+        app: personal-ghost
+    spec:
+      containers:
+      - name: personal-ghost
+        image: ghcr.io/justin-vanwinkle/ghost-website/ghost:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 2368
+        # readinessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 2368
+        #     httpHeaders:
+        #     - name: X-Forwarded-Proto
+        #       value: https
+        #   failureThreshold: 1
+        #   initialDelaySeconds: 5
+        #   periodSeconds: 5
+        #   successThreshold: 1
+        #   timeoutSeconds: 5
+        # livenessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 2368
+        #     httpHeaders:
+        #     - name: X-Forwarded-Proto
+        #       value: https
+        #   failureThreshold: 3
+        #   initialDelaySeconds: 10
+        #   periodSeconds: 30
+        #   successThreshold: 1
+        #   timeoutSeconds: 5
+        resources:
+          requests:
+            memory: "300Mi"
+            cpu: "300m"
+          limits:
+            memory: "600Mi"
+            cpu: "600m"
+        env:
+          - name: NODE_ENV
+            value: production
+          # - name: AZURE_STORAGE_CONNECTION_STRING
+          #   valueFrom:
+          #     secretKeyRef:
+          #       name: personal-website
+          #       key: storage-connectionString
+          - name: database__connection__password
+            valueFrom:
+              secretKeyRef:
+                name: personal-website
+                key: db-password
+          - name: mail__options__auth__pass
+            valueFrom:
+              secretKeyRef:
+                name: personal-website
+                key: mail-password
+      #   volumeMounts:
+      #   - mountPath: /var/lib/ghost/content/images
+      #     name: ghost-volume
+      #   - mountPath: /var/lib/ghost/content/data
+      #     name: ghost-volume
+      # volumes:
+      # - name: ghost-volume
+      #   persistentVolumeClaim:
+      #     claimName: pvc-ghost-personal
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: github-registry-credentials
