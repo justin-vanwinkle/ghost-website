@@ -32,7 +32,7 @@ jobs:
           cluster-name: aks-centralus
 
       - name: Deploy to Kubernetes cluster
-        uses: Azure/k8s-deploy@v1.3
+        uses: Azure/k8s-deploy@v4.7
         with:
           namespace: ghost
           manifests: k8s/manifest.yaml
