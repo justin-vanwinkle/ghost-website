@@ -1,3 +1,3 @@
-FROM ghost:5.59.0-alpine
+FROM ghost:5.60.0-alpine
 
 COPY config.production.json .
