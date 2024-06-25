@@ -23,11 +23,15 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
+      - uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
       - name: Azure Kubernetes set context
         uses: Azure/aks-set-context@v4
         with:
           # Azure credentials i.e. output of `az ad sp create-for-rbac --sdk-auth`
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          # creds: ${{ secrets.AZURE_CREDENTIALS }}
           resource-group: rg-aks-centralus
           cluster-name: aks-centralus
 
