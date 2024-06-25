@@ -1,40 +1,36 @@
-<!DOCTYPE html>
-<html lang="{{@site.lang}}">
+{{!< base-resume}}
 
-<head>
+{{!-- Everything inside the #post tags pulls data from the post --}}
+{{#post}}
+<main id="site-main" class="site-main outer">
+  <div class="inner">
 
-    {{!-- Document Settings --}}
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <article class="post-full {{post_class}} {{#unless feature_image}}no-image{{/unless}}">
 
-    {{!-- Base Meta --}}
-    <title>{{meta_title}}</title>
-    <meta name="HandheldFriendly" content="True" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <header class="post-full-header">
+      </header>
 
-    {{!-- Styles'n'Scripts --}}
-    <link rel="stylesheet" type="text/css" href="{{asset "css/resume-print.css"}}" media="print">
-    <link rel="stylesheet" type="text/css" href="{{asset "css/resume-screen.css"}}" media="screen">
+      {{#if feature_image}}
+      <figure class="post-full-image">
+        {{!-- This is a responsive image, it loads different sizes depending on device
+                https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 --}}
+        <img srcset="{{img_url feature_image size="s"}} 300w,
+                            {{img_url feature_image size="m"}} 600w,
+                            {{img_url feature_image size="l"}} 1000w,
+                            {{img_url feature_image size="xl"}} 2000w" sizes="(max-width: 800px) 400px,
+                            (max-width: 1170px) 700px,
+                            1400px" src="{{img_url feature_image size="xl"}}" alt="{{title}}" />
+      </figure>
+      {{/if}}
 
-    {{!-- This tag outputs SEO meta+structured data and other important settings --}}
-    {{ghost_head}}
-
-</head>
-
-<body class="{{body_class}}">
-
-    <div id="main">
-        <div id="content">
-            {{{body}}}
+      <section class="post-full-content">
+        <div class="post-content">
+          {{content}}
         </div>
-    </div>
+      </section>
 
-    {{!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. --}}
-    {{{block "scripts"}}}
+    </article>
 
-    {{!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag --}}
-    {{ghost_foot}}
-
-</body>
-
-</html>
+  </div>
+</main>
+{{/post}}
