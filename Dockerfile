@@ -4,6 +4,7 @@ COPY config.production.json .
 
 COPY ads.txt /var/lib/ghost/current/content/themes/casper
 COPY page-templates/* /var/lib/ghost/current/content/themes/casper
+COPY static/* /var/lib/ghost/current/content/themes/casper
 
 COPY routes.yaml /var/lib/ghost/current/content/settings
 
