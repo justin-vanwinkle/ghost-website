@@ -26,11 +26,13 @@ jobs:
         with:
           kubelogin-version: 'v0.0.24'
                 
-      - name: Azure Kubernetes set context
+      - name: Set AKS context
         uses: Azure/aks-set-context@v4
         with:
           resource-group: rg-aks-centralus
           cluster-name: aks-centralus
+          admin: 'false'
+          use-kubelogin: 'true'
 
       - name: Deploy to Kubernetes cluster
         uses: Azure/k8s-deploy@v5
