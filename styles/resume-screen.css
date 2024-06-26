@@ -147,12 +147,11 @@ License: none (public domain)
  }
 
  h3 {
-    left: 33%;
+     left: 33%;
      margin-bottom: 0.7em;
      font-size: 1em;
      line-height: 2em; 
      position: relative;
-     text-align: right;
  }
 
  a {
