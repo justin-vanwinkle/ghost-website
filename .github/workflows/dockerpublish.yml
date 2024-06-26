@@ -1,28 +1,21 @@
-name: Docker
+name: Build, Push, & Deploy
 
 on:
   push:
     branches:
       - master
-
-    # Publish `v1.2.3` tags as releases.
-    tags:
-      - v*
-
-  # Run tests for any PRs.
-  pull_request:
+  workflow_dispatch:
 
 env:
-  # IMAGE_NAME: selfhub
   IMAGE_NAME: docker.pkg.github.com/${{ github.repository }}/ghost
+
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
-
-  # See also https://docs.docker.com/docker-hub/builds/
-  push:
-
+  build:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
-
     steps:
       - uses: actions/checkout@v4
 
@@ -37,3 +30,37 @@ jobs:
           docker tag $IMAGE_NAME:${{ github.run_number }} $IMAGE_NAME:latest
           docker push $IMAGE_NAME:${{ github.run_number }}
           docker push $IMAGE_NAME:latest
+
+  
+  deploy:
+    environment: prod
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Azure login
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Setup kubelogin
+        uses: Azure/use-kubelogin@v1
+        with:
+          kubelogin-version: 'v0.0.24'
+                
+      - name: Set AKS context
+        uses: Azure/aks-set-context@v4
+        with:
+          resource-group: rg-aks-centralus
+          cluster-name: aks-centralus
+          admin: 'false'
+          use-kubelogin: 'true'
+
+      - name: Deploy to Kubernetes cluster
+        uses: Azure/k8s-deploy@v5
+        with:
+          namespace: ghost
+          manifests: k8s/deployment.yaml
+          images: docker.pkg.github.com/${{ github.repository }}/ghost:${{ github.run_number }}
