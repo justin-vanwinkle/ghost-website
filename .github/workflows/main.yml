@@ -23,6 +23,8 @@ jobs:
 
       - name: Setup kubelogin
         uses: Azure/use-kubelogin@v1
+        with:
+          kubelogin-version: 'v0.0.24'
                 
       - name: Azure Kubernetes set context
         uses: Azure/aks-set-context@v4
