@@ -24,8 +24,6 @@ jobs:
       - name: Azure Kubernetes set context
         uses: Azure/aks-set-context@v4
         with:
-          # Azure credentials i.e. output of `az ad sp create-for-rbac --sdk-auth`
-          # creds: ${{ secrets.AZURE_CREDENTIALS }}
           resource-group: rg-aks-centralus
           cluster-name: aks-centralus
 
@@ -33,5 +31,5 @@ jobs:
         uses: Azure/k8s-deploy@v5
         with:
           namespace: ghost
-          manifests: k8s/manifest.yaml
+          manifests: k8s/deployment.yaml
           images: docker.pkg.github.com/${{ github.repository }}/ghost
