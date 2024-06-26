@@ -31,7 +31,7 @@ jobs:
         with:
           resource-group: rg-aks-centralus
           cluster-name: aks-centralus
-          admin: 'true'
+          admin: 'false'
           use-kubelogin: 'true'
 
       - name: Deploy to Kubernetes cluster
