@@ -21,6 +21,9 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
+      - name: Setup kubelogin
+        uses: Azure/use-kubelogin@v1
+                
       - name: Azure Kubernetes set context
         uses: Azure/aks-set-context@v4
         with:
