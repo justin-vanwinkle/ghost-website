@@ -65,4 +65,4 @@ jobs:
         with:
           namespace: ghost
           manifests: k8s/deployment.yaml
-          images: docker.pkg.github.com/${{ github.repository }}/ghost:${{ github.run_number }}
+          images: ghcr.io/${{ github.repository }}/ghost:${{ github.run_number }}
