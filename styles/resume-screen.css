@@ -62,14 +62,6 @@ License: none (public domain)
      max-width: 1080px;
  }
 
- h3 {
-     position: relative;
-     left: 33%;
-     margin-bottom: 0.7em;
-     margin-right: 0;
-     width: 65%;
- }
-
  p {
      position: relative;
      left: 33%;
@@ -155,12 +147,12 @@ License: none (public domain)
  }
 
  h3 {
+    left: 33%;
+     margin-bottom: 0.7em;
      font-size: 1em;
      line-height: 2em; 
      position: relative;
-     top: 1.7em;
      text-align: right;
-     width: 20%;
  }
 
  a {
