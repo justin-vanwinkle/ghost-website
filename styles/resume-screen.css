@@ -62,6 +62,14 @@ License: none (public domain)
      max-width: 1080px;
  }
 
+ h2 {
+     position: relative;
+     left: 33%;
+     margin-bottom: 0.7em;
+     margin-right: 0;
+     width: 65%;
+ }
+
  p {
      position: relative;
      left: 33%;
