@@ -1,5 +1,5 @@
 routes:
-  /resume/: resume
+  # /resume/: resume
 
 collections:
   /:
