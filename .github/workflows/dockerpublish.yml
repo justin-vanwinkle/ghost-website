@@ -27,12 +27,11 @@ jobs:
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
 
       - name: Push images
-        run: |          
+        run: |
           docker tag $IMAGE_NAME:${{ github.run_number }} $IMAGE_NAME:latest
           docker push $IMAGE_NAME:${{ github.run_number }}
           docker push $IMAGE_NAME:latest
 
-  
   deploy:
     needs: build
     environment: prod
@@ -50,15 +49,22 @@ jobs:
       - name: Setup kubelogin
         uses: Azure/use-kubelogin@v1
         with:
-          kubelogin-version: 'v0.0.24'
-                
+          kubelogin-version: "v0.0.24"
+
       - name: Set AKS context
         uses: Azure/aks-set-context@v4
         with:
           resource-group: rg-aks-centralus
           cluster-name: aks-centralus
-          admin: 'false'
-          use-kubelogin: 'true'
+          admin: "false"
+          use-kubelogin: "true"
+
+      - name: Deploy to Ingress to Kubernetes cluster
+        uses: Azure/k8s-deploy@v5
+        with:
+          namespace: ghost
+          manifests: k8s/ingress.yaml
+          images: ghcr.io/${{ github.repository }}/ghost:${{ github.run_number }}
 
       - name: Deploy to Kubernetes cluster
         uses: Azure/k8s-deploy@v5
