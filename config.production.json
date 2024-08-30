@@ -11,7 +11,7 @@
   "database": {
     "client": "mysql",
     "connection": {
-      "host": "mysql.ghost.svc.cluster.local",
+      "host": "sharedb.mysql.database.azure.com",
       "port": 3306,
       "user": "ghost",
       "password": "",
