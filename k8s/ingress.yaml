@@ -7,7 +7,7 @@ metadata:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     cert-manager.io/cluster-issuer: letsencrypt
-    nginx.ingress.kubernetes.io/proxy-body-size: 256m # use this when you need to upload a backup
+    nginx.ingress.kubernetes.io/proxy-body-size: 25600m # use this when you need to upload a backup
 spec:
   tls:
     - hosts:
